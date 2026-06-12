@@ -88,4 +88,4 @@ A página conta com uma seção de timeline com 9 projetos reais desenvolvidos d
 
 ## 🌐 GitHub Pages
 
-🔗 <!-- LINK DO GITHUB PAGES AQUI -->
+🔗 https://danilog07j.github.io/Linha-do-Tempo/
