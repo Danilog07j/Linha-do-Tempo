@@ -408,7 +408,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap);
-  align-items: start;
+  align-items: stretch; /* cards da mesma linha ficam com altura igual */
 }
 
 /* card de futuro (maior texto) ocupa linha inteira abaixo */
@@ -439,8 +439,15 @@ a {
   animation-delay: 0.2s;
 }
 
+/* card futuro: texto longo em 2 colunas para melhor legibilidade */
 .evolucao-card--futuro {
   animation-delay: 0.3s;
+}
+
+.evolucao-card--futuro p {
+  column-count: 2;
+  column-gap: 2.5rem;
+  column-rule: 1px solid var(--border);
 }
 
 /* ---------- ÍCONE ---------- */
@@ -660,6 +667,12 @@ a {
 
   .evolucao-card--futuro {
     grid-column: auto;
+  }
+
+  /* texto do futuro volta para 1 coluna no mobile */
+  .evolucao-card--futuro p {
+    column-count: 1;
+    column-rule: none;
   }
 
   .section-label {
