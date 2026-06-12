@@ -1,9 +1,7 @@
 /* ================================================
    TIMELINE DO SEMESTRE
    Fontes: Plus Jakarta Sans + Geist Mono
-   
    ================================================ */
-
 
 :root {
   --bg:          #F8F8F6;
@@ -60,9 +58,8 @@ a {
   text-decoration: none;
 }
 
-
 /* ================================================
-   ANIMAÇÃO 1 — fadeUp (entrada dos cards/items)
+   ANIMAÇÕES
    ================================================ */
 @keyframes fadeUp {
   from {
@@ -75,18 +72,12 @@ a {
   }
 }
 
-/* ================================================
-   ANIMAÇÃO 2 — markerPop (losango que "pulsa")
-   ================================================ */
 @keyframes markerPop {
   0%   { transform: rotate(45deg) scale(0.4); opacity: 0; }
   60%  { transform: rotate(45deg) scale(1.15); opacity: 1; }
   100% { transform: rotate(45deg) scale(1); }
 }
 
-/* ================================================
-   ANIMAÇÃO 3 — slideRight (hero title)
-   ================================================ */
 @keyframes slideRight {
   from {
     opacity: 0;
@@ -98,23 +89,16 @@ a {
   }
 }
 
-/* ================================================
-   ANIMAÇÃO 4 — lineDraw (linha da timeline cresce)
-   ================================================ */
 @keyframes lineDraw {
   from { transform: scaleY(0); }
   to   { transform: scaleY(1); }
 }
 
-/* ================================================
-   ANIMAÇÃO 5 — pulse (marcador final)
-   ================================================ */
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(160, 113, 79, 0.35); }
   50%       { box-shadow: 0 0 0 10px rgba(160, 113, 79, 0); }
 }
 
-/* prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -122,9 +106,8 @@ a {
   }
 }
 
-
 /* ================================================
-   HEADER / NAV
+   HEADER / NAV & BRANDING
    ================================================ */
 .site-header {
   background-color: var(--surface);
@@ -142,10 +125,46 @@ a {
   gap: 1rem;
 }
 
+.nav-branding {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dev-journey-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent-dim);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.logo-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--accent);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .nav-logo {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
+  border-left: 1px solid var(--border);
+  padding-left: 1.25rem;
 }
 
 .nav-name {
@@ -213,7 +232,6 @@ a {
   animation: fadeUp 0.6s 0.3s ease both;
 }
 
-
 /* ================================================
    SECTION LABEL (indicador 01 / 02)
    ================================================ */
@@ -242,7 +260,6 @@ a {
   color: var(--text-muted);
 }
 
-
 /* ================================================
    SEÇÃO TIMELINE
    ================================================ */
@@ -252,7 +269,6 @@ a {
   padding: 5rem 2rem;
 }
 
-/* ---------- LINHA VERTICAL ---------- */
 .timeline {
   position: relative;
   padding-left: 3rem;
@@ -270,7 +286,6 @@ a {
   animation: lineDraw 1.2s 0.2s ease both;
 }
 
-/* ---------- ITEM ---------- */
 .timeline-item {
   position: relative;
   padding-bottom: 2.75rem;
@@ -281,7 +296,6 @@ a {
   padding-bottom: 0;
 }
 
-/* ---------- MARCADOR  ---------- */
 .timeline-marker {
   position: absolute;
   left: -2.35rem;
@@ -300,7 +314,7 @@ a {
 .timeline-marker--final {
   background: var(--text);
   animation: markerPop 0.45s var(--delay, 0s) ease both,
-             pulse 2s 1s ease-in-out infinite;
+              pulse 2s 1s ease-in-out infinite;
 }
 
 .marker-num {
@@ -313,7 +327,6 @@ a {
   line-height: 1;
 }
 
-/* ---------- CONTEÚDO ---------- */
 .timeline-content {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -342,7 +355,6 @@ a {
   line-height: 1.6;
 }
 
-/* placeholder vazio */
 .timeline-content p:empty::before {
   content: '⚠ Insira sua descrição aqui';
   color: #CCC;
@@ -350,7 +362,6 @@ a {
   font-size: 0.8rem;
 }
 
-/* ---------- BOTÃO ACESSE AQUI ---------- */
 .btn-acesse {
   display: inline-flex;
   align-items: center;
@@ -385,7 +396,6 @@ a {
   transform: translate(2px, -2px);
 }
 
-
 /* ================================================
    SEÇÃO MINHA EVOLUÇÃO
    ================================================ */
@@ -403,20 +413,17 @@ a {
   margin-right: auto;
 }
 
-/* ---------- GRID ---------- */
 .evolucao-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap);
-  align-items: stretch; /* cards da mesma linha ficam com altura igual */
+  align-items: stretch;
 }
 
-/* card de futuro (maior texto) ocupa linha inteira abaixo */
 .evolucao-card--futuro {
   grid-column: 1 / -1;
 }
 
-/* ---------- CARD ---------- */
 .evolucao-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -439,7 +446,6 @@ a {
   animation-delay: 0.2s;
 }
 
-/* card futuro: texto longo em 2 colunas para melhor legibilidade */
 .evolucao-card--futuro {
   animation-delay: 0.3s;
 }
@@ -450,7 +456,6 @@ a {
   column-rule: 1px solid var(--border);
 }
 
-/* ---------- ÍCONE ---------- */
 .card-icon {
   width: 2.5rem;
   height: 2.5rem;
@@ -468,7 +473,6 @@ a {
   background: var(--surface);
 }
 
-/* ---------- TIPOGRAFIA DOS CARDS ---------- */
 .evolucao-card h2 {
   font-size: 1.15rem;
   font-weight: 700;
@@ -491,7 +495,6 @@ a {
   line-height: 1.65;
 }
 
-/* placeholder vazio nos cards */
 .evolucao-card p:empty::before {
   content: '⚠ Insira seu texto aqui';
   color: #CCC;
@@ -499,7 +502,6 @@ a {
   font-size: 0.8rem;
 }
 
-/* ---------- LISTA ---------- */
 .evolucao-list {
   display: flex;
   flex-direction: column;
@@ -529,7 +531,6 @@ a {
   font-size: 0.8rem;
 }
 
-/* ---------- FOTO PLACEHOLDER ---------- */
 .evolucao-foto {
   margin-top: 0.5rem;
 }
@@ -550,7 +551,6 @@ a {
   font-size: 0.72rem;
   color: var(--border);
 }
-
 
 /* ================================================
    FOOTER
@@ -587,12 +587,10 @@ a {
   margin-top: 0.5rem;
 }
 
-
 /* ================================================
    RESPONSIVIDADE — MEDIA QUERIES
    ================================================ */
 
-/* ---------- TABLET (768px – 1023px) ---------- */
 @media (max-width: 1023px) {
   :root {
     --max-w: 700px;
@@ -602,7 +600,6 @@ a {
     font-size: clamp(2.2rem, 6vw, 3.5rem);
   }
 
-  /* grid já é 1fr 1fr no desktop; no tablet mantém igual */
   .evolucao-grid {
     gap: 1.5rem;
   }
@@ -612,7 +609,6 @@ a {
   }
 }
 
-/* ---------- SMARTPHONE (até 767px) ---------- */
 @media (max-width: 767px) {
   :root {
     --max-w: 100%;
@@ -624,6 +620,18 @@ a {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  .nav-branding {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .nav-logo {
+    border-left: none;
+    padding-left: 0;
   }
 
   .nav-links {
@@ -669,7 +677,6 @@ a {
     grid-column: auto;
   }
 
-  /* texto do futuro volta para 1 coluna no mobile */
   .evolucao-card--futuro p {
     column-count: 1;
     column-rule: none;
