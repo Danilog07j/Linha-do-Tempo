@@ -525,7 +525,7 @@ a {
 }
 
 .evolucao-list li:empty::after {
-  content: '⚠ Item aqui';
+  
   color: #CCC;
   font-style: italic;
   font-size: 0.8rem;
