@@ -406,9 +406,14 @@ a {
 /* ---------- GRID ---------- */
 .evolucao-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: var(--gap);
   align-items: start;
+}
+
+/* card de futuro (maior texto) ocupa linha inteira abaixo */
+.evolucao-card--futuro {
+  grid-column: 1 / -1;
 }
 
 /* ---------- CARD ---------- */
@@ -590,14 +595,9 @@ a {
     font-size: clamp(2.2rem, 6vw, 3.5rem);
   }
 
+  /* grid já é 1fr 1fr no desktop; no tablet mantém igual */
   .evolucao-grid {
-    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-  }
-
-  /* card de futuro ocupa linha inteira */
-  .evolucao-card--futuro {
-    grid-column: 1 / -1;
   }
 
   .foto-placeholder {
