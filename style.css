@@ -1,0 +1,672 @@
+/* ================================================
+   TIMELINE DO SEMESTRE
+   Fontes: Plus Jakarta Sans + Geist Mono
+   
+   ================================================ */
+
+
+:root {
+  --bg:          #F8F8F6;
+  --surface:     #FFFFFF;
+  --border:      #E4E4E0;
+  --text:        #111111;
+  --text-muted:  #888888;
+  --accent:      #A0714F;
+  --accent-dim:  #F2EAE3;
+  --line:        #DDDDD8;
+
+  --font-body:   'Plus Jakarta Sans', sans-serif;
+  --font-mono:   'Geist Mono', monospace;
+
+  --radius:      12px;
+  --radius-sm:   6px;
+  --max-w:       860px;
+  --gap:         2rem;
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ================================================
+   ANIMAÇÃO 1 — fadeUp (entrada dos cards/items)
+   ================================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================================
+   ANIMAÇÃO 2 — markerPop (losango que "pulsa")
+   ================================================ */
+@keyframes markerPop {
+  0%   { transform: rotate(45deg) scale(0.4); opacity: 0; }
+  60%  { transform: rotate(45deg) scale(1.15); opacity: 1; }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+/* ================================================
+   ANIMAÇÃO 3 — slideRight (hero title)
+   ================================================ */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================================================
+   ANIMAÇÃO 4 — lineDraw (linha da timeline cresce)
+   ================================================ */
+@keyframes lineDraw {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* ================================================
+   ANIMAÇÃO 5 — pulse (marcador final)
+   ================================================ */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(160, 113, 79, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(160, 113, 79, 0); }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ================================================
+   HEADER / NAV
+   ================================================ */
+.site-header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.6s ease both;
+}
+
+.nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.nav-name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.nav-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5rem 2rem 4.5rem;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  animation: slideRight 0.7s 0.15s ease both;
+}
+
+.hero-sub {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+
+/* ================================================
+   SECTION LABEL (indicador 01 / 02)
+   ================================================ */
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.section-label span:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+.section-label span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+
+/* ================================================
+   SEÇÃO TIMELINE
+   ================================================ */
+.section-timeline {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+/* ---------- LINHA VERTICAL ---------- */
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.65rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+  transform-origin: top;
+  animation: lineDraw 1.2s 0.2s ease both;
+}
+
+/* ---------- ITEM ---------- */
+.timeline-item {
+  position: relative;
+  padding-bottom: 2.75rem;
+  animation: fadeUp 0.5s var(--delay, 0s) ease both;
+}
+
+.timeline-item--last {
+  padding-bottom: 0;
+}
+
+/* ---------- MARCADOR  ---------- */
+.timeline-marker {
+  position: absolute;
+  left: -2.35rem;
+  top: 0.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent);
+  border-radius: 3px;
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: markerPop 0.45s var(--delay, 0s) ease both;
+}
+
+.timeline-marker--final {
+  background: var(--text);
+  animation: markerPop 0.45s var(--delay, 0s) ease both,
+             pulse 2s 1s ease-in-out infinite;
+}
+
+.marker-num {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 600;
+  color: #fff;
+  transform: rotate(-45deg);
+  display: block;
+  line-height: 1;
+}
+
+/* ---------- CONTEÚDO ---------- */
+.timeline-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.timeline-content:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(160, 113, 79, 0.08);
+  transform: translateX(3px);
+}
+
+.timeline-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-content p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* placeholder vazio */
+.timeline-content p:empty::before {
+  content: '⚠ Insira sua descrição aqui';
+  color: #CCC;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* ---------- BOTÃO ACESSE AQUI ---------- */
+.btn-acesse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+
+.btn-acesse::after {
+  content: '↗';
+  font-size: 0.8rem;
+  transition: transform 0.18s;
+}
+
+.btn-acesse:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(160, 113, 79, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-acesse:hover::after {
+  transform: translate(2px, -2px);
+}
+
+
+/* ================================================
+   SEÇÃO MINHA EVOLUÇÃO
+   ================================================ */
+.section-evolucao {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 2rem;
+}
+
+.section-evolucao > .section-label,
+.section-evolucao > .evolucao-grid {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- GRID ---------- */
+.evolucao-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  align-items: start;
+}
+
+/* ---------- CARD ---------- */
+.evolucao-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.evolucao-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+
+.evolucao-card--agora {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  animation-delay: 0.2s;
+}
+
+.evolucao-card--futuro {
+  animation-delay: 0.3s;
+}
+
+/* ---------- ÍCONE ---------- */
+.card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.evolucao-card--agora .card-icon {
+  background: var(--surface);
+}
+
+/* ---------- TIPOGRAFIA DOS CARDS ---------- */
+.evolucao-card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.evolucao-card h4 {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+.evolucao-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* placeholder vazio nos cards */
+.evolucao-card p:empty::before {
+  content: '⚠ Insira seu texto aqui';
+  color: #CCC;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* ---------- LISTA ---------- */
+.evolucao-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.evolucao-list li {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.evolucao-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.05rem;
+}
+
+.evolucao-list li:empty::after {
+  content: '⚠ Item aqui';
+  color: #CCC;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* ---------- FOTO PLACEHOLDER ---------- */
+.evolucao-foto {
+  margin-top: 0.5rem;
+}
+
+.foto-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.foto-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--border);
+}
+
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.site-footer {
+  padding: 3rem 2rem;
+  background: var(--bg);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.footer-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-credit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--border);
+  margin-top: 0.5rem;
+}
+
+
+/* ================================================
+   RESPONSIVIDADE — MEDIA QUERIES
+   ================================================ */
+
+/* ---------- TABLET (768px – 1023px) ---------- */
+@media (max-width: 1023px) {
+  :root {
+    --max-w: 700px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+  }
+
+  .evolucao-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* card de futuro ocupa linha inteira */
+  .evolucao-card--futuro {
+    grid-column: 1 / -1;
+  }
+
+  .foto-placeholder {
+    aspect-ratio: 16 / 5;
+  }
+}
+
+/* ---------- SMARTPHONE (até 767px) ---------- */
+@media (max-width: 767px) {
+  :root {
+    --max-w: 100%;
+    --gap: 1.25rem;
+  }
+
+  .nav {
+    padding: 1rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .hero {
+    padding: 3rem 1.25rem 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .section-timeline {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .timeline {
+    padding-left: 2.25rem;
+  }
+
+  .timeline::before {
+    left: 0.55rem;
+  }
+
+  .timeline-marker {
+    left: -1.75rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .section-evolucao {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .evolucao-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .evolucao-card--futuro {
+    grid-column: auto;
+  }
+
+  .section-label {
+    margin-bottom: 2.5rem;
+  }
+
+  .site-footer {
+    padding: 2rem 1.25rem;
+  }
+}

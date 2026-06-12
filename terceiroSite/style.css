@@ -1,0 +1,18 @@
+body {
+  font-family: Arial;
+  background-color: #398b32;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+img {
+  width: 350px;
+  border-radius: 10px;
+}
+.card {
+  background-color: #533924;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+}
